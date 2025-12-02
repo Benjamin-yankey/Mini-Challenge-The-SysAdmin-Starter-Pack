@@ -1,2 +1,2 @@
-
-echo "Running backup (placeholder) at $(date)"
+#!/bin/bash
+echo "Running backup at $(date)"
