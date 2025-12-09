@@ -1,42 +1,37 @@
 #!/bin/bash
 
-set -e
+# Create directories with existence check
+if [ -d "logs" ]; then
+    echo "Directory already exists: logs"
+else
+    mkdir logs
+fi
 
-# Remove existing directories if they exist
-rm -rf logs configs scripts
+if [ -d "configs" ]; then
+    echo "Directory already exists: configs"
+else
+    mkdir configs
+fi
 
-# Create directories
-mkdir -p logs configs scripts
-echo "Created directories: logs, configs, scripts"
+if [ -d "scripts" ]; then
+    echo "Directory already exists: scripts"
+else
+    mkdir scripts
+fi
 
-# Create logs/system.log
-echo "[2025-12-02 10:00:00] System initialized successfully" > logs/system.log
-echo "Created: logs/system.log"
-
-# Create configs/app.conf
-echo "APP_ENV=production" > configs/app.conf
-echo "Created: configs/app.conf"
-
-# Create scripts/backup.sh
-cat > scripts/backup.sh <<'EOF'
-#!/bin/bash
-echo "Running backup at $(date)"
-EOF
-echo "Created: scripts/backup.sh"
+# Create files with sample content
+echo "System log initialized" > logs/system.log
+echo "App configuration file" > configs/app.conf
+echo "#!/bin/bash
+echo 'Backup script running...'" > scripts/backup.sh
 
 # Set permissions
 chmod 644 logs/system.log
 chmod 444 configs/app.conf
 chmod 755 scripts/backup.sh
 
-echo ""
-echo "Directory Structure:"
-if command -v tree &> /dev/null; then
-    tree
-else
-    ls -R
-fi
+# Display directory structure
+tree
 
-echo ""
-echo "Permissions Overview:"
+# Display permissions
 ls -lR
