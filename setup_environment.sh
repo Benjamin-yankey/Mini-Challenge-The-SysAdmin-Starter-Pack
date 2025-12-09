@@ -31,8 +31,15 @@ chmod 644 logs/system.log
 chmod 444 configs/app.conf
 chmod 755 scripts/backup.sh
 
+
 # Display directory structure
-tree
+if command -v tree &> /dev/null; then
+    tree
+else
+    echo "tree command not found. Using ls -R instead:"
+    ls -R
+fi
+
 
 # Display permissions
 ls -lR
