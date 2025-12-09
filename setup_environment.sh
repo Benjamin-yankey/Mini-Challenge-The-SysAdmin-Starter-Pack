@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Exit on error
 set -e
 
 # Create directories with existence check
