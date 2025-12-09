@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -e
 
 # Create directories with existence check
 if [ -d "logs" ]; then
@@ -22,8 +24,7 @@ fi
 # Create files with sample content
 echo "System log initialized" > logs/system.log
 echo "App configuration file" > configs/app.conf
-echo "#!/bin/bash
-echo 'Backup script running...'" > scripts/backup.sh
+echo "#!/bin/bash echo 'Backup script running...'" > scripts/backup.sh
 
 # Set permissions
 chmod 644 logs/system.log
